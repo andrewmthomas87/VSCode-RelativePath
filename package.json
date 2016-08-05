@@ -1,0 +1,89 @@
+{
+	"name": "RelativePath",
+	"description": "Get relative url paths from files in the current workspace.",
+	"version": "0.8.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jakob101/RelativePath"
+	},
+	"publisher": "jakob101",
+	"galleryBanner": {
+		"color": "#373277",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "^0.10.1"
+	},
+	"categories": [
+		"Other"
+	],
+	"license": "MIT",
+	"displayName": "Relative Path",
+	"activationEvents": [
+		"onCommand:extension.relativePath"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.relativePath",
+				"title": "Relative Path"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.relativePath",
+				"key": "ctrl+shift+h",
+				"mac": "cmd+shift+h",
+				"when": "editorTextFocus"
+			}
+		],
+		"configuration": {
+			"title": "RelativePath extension configuration",
+			"type": "object",
+			"properties": {
+				"relativePath.ignore": {
+					"type": "array",
+					"default": [
+						"**/node_modules/**",
+						"**/*.dll",
+						"**/obj/**",
+						"**/objd/**"
+					],
+					"items": {
+						"type": "string"
+					},
+					"description": "An array of glob keys to ignore when searching."
+				},
+				"relativePath.resolveExtensions": {
+					"type": "array",
+					"default": [],
+					"items": {
+						"type": "string"
+					},
+					"description": "An array of extensions that should be used to resolve modules. For example, in order to discover CoffeeScript files, your array should contain the string '.coffee'."
+				}
+			}
+		}
+	},
+	"icon": "icon.png",
+	"keywords": [
+		"relative",
+		"path",
+		"url",
+		"file"
+	],
+	"scripts": {
+		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
+	},
+	"devDependencies": {
+		"typescript": "^1.6.2",
+		"vscode": "0.10.x"
+	},
+	"__metadata": {
+		"id": "e8b469bd-915d-4070-bfc2-05c9b546f8ee",
+		"publisherId": "ce7c7817-71f3-4c7b-beaa-d22eb4299832",
+		"publisherDisplayName": "jakob101"
+	}
+}
